@@ -1,0 +1,43 @@
+<!-- <p>login works!</p> -->
+<div style="width:50%;margin:auto">
+    <a class="dash" routerLink="/dashboard">Go to dashboard</a>    
+    <form [formGroup]="loginForm" (submit)="login()">
+        <div class="container">
+            <h1>Login</h1>
+            <p>Please provide your credentials</p>
+            <hr>
+            
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" formControlName="email">
+            <div
+                *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
+                class="error" style="margin-bottom: 20px;">
+                <div *ngIf="loginForm.controls['email'].errors.required">
+                    Email is required.
+                </div>
+                <div *ngIf="loginForm.controls['email'].errors.email">
+                    Email is invalid.
+                </div>
+            </div>
+            
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" formControlName="password">
+            <div
+                *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+                class="error" style="margin-bottom: 20px;">
+                <div *ngIf="loginForm.controls['password'].errors.required">
+                    Password is required.
+                </div>
+            </div>
+    
+            <div >
+                <!-- <button type="button" class="cancelbtn" (click)="reset()">Reset</button> -->
+                <button type="submit" class="signupbtn" [disabled]="!loginForm.valid" [ngClass]="{'disabled': !loginForm.valid}">Login</button>
+                <!-- <button routerLink="/auth/signup">Register Here</button> -->
+            </div>
+            <p style="margin-top: 5px">New User? <a routerLink="/auth/signup">SignUp </a></p>
+        </div>
+    </form>
+</div>
+
+

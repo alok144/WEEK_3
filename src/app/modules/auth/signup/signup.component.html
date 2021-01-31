@@ -1,0 +1,105 @@
+<!-- <p>signup works!</p> -->
+
+<div id="id01">
+    <a class="dashboard" routerLink="/dashboard">Go to dashboard</a>    
+    <form [formGroup]="registerForm" (submit)="register()">
+      <div class="container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="email" formControlName="firstName">
+        <div
+          *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)"
+          class="error" style="margin-bottom: 20px;">
+          <div *ngIf="registerForm.controls['firstName'].errors.required">
+            First Name is required.
+          </div>
+          <div *ngIf="registerForm.controls['firstName'].errors.pattern">
+            First name only contains alphabets
+          </div>
+        </div>
+  
+        <label><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="email" formControlName="lastName">
+        <div
+          *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)"
+          class="error" style="margin-bottom: 20px;">
+          <div *ngIf="registerForm.controls['lastName'].errors.pattern">
+            First name only contains alphabets
+          </div>
+        </div>
+
+        <label><b>Contact No</b></label>
+        <input type="text" placeholder="Enter Contact Number" name="email" formControlName="contact">
+        <div
+          *ngIf="registerForm.controls['contact'].invalid && (registerForm.controls['contact'].dirty || registerForm.controls['contact'].touched)"
+          class="error" style="margin-bottom: 20px;">
+          <div *ngIf="registerForm.controls['contact'].errors.required">
+            Contact Number is required.
+          </div>
+          <div *ngIf="registerForm.controls['contact'].errors.minlength || registerForm.controls['contact'].errors.maxlength">
+            Contact Number should be 10 digits long.
+          </div>
+          <div *ngIf="registerForm.controls['contact'].errors.pattern">
+            Only numbers allowed.
+          </div>
+        </div>
+  
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" formControlName="email">
+        <div
+          *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
+          class="error" style="margin-bottom: 20px;">
+          <div *ngIf="registerForm.controls['email'].errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="registerForm.controls['email'].errors.email">
+            Email is invalid.
+          </div>
+        </div>
+        
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" formControlName="password">
+        <div
+          *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+          class="error" style="margin-bottom: 20px;">
+          <div *ngIf="registerForm.controls['password'].errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="registerForm.controls['password'].errors.minlength">
+            Password should be atleast 6 character long.
+          </div>
+        </div>
+  
+        <label><b>Confirm Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" formControlName="cpassword">
+        <div
+          *ngIf="registerForm.controls['cpassword'].invalid && (registerForm.controls['cpassword'].dirty || registerForm.controls['cpassword'].touched)"
+          class="error" style="margin-bottom: 20px;">
+          <div *ngIf="registerForm.controls['cpassword'].errors.required">
+            Confirm Password is required.
+          </div>
+          <div *ngIf="registerForm.controls['cpassword'].errors.minlength">
+            Confirm password should be atleast 6 character long.
+          </div>
+          <!-- <div *ngIf="registerForm.controls['password'] != registerForm.controls['cpassword']">
+            Confirm password and Password not matched
+          </div> -->
+          <!-- <div *ngIf="registerForm.controls['password'] != registerForm.controls['cpassword']">
+            Confirm password and Password not matched
+          </div> -->
+          <div *ngIf="registerForm.controls['cpassword'].errors">
+            Confirm password and Password not matched
+          </div>
+        </div>        
+  
+        <div class="clearfix">
+          <button type="button" class="cancelbtn" (click)="reset()">Reset</button>
+          <button type="submit" class="signupbtn" [disabled]="!registerForm.valid" [ngClass]="{'disabled': !registerForm.valid}">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div> 
+
+<!-- <button routerLink="/dashboard">Go to dashboard</button> -->
